@@ -7,10 +7,13 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "^15.6.1",
+		"react": "16.0.0-alpha.12",
 		"react-native": "0.47.2",
 		"react-native-navigation": "^1.1.205",
 		"react-redux": "^5.0.6",
+		"redux": "^3.7.2",
+		"redux-immutable-state-invariant": "^2.0.0",
+		"redux-logger": "^3.0.6",
 		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {

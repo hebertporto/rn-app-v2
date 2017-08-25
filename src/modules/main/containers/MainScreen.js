@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-
-
 import {
   StyleSheet,
   Text,
   View,
   FlatList
 } from 'react-native';
+
+import { getInfo } from '../actions/index';
+
+import { connect } from 'react-redux';
 
 class MainScrenn extends Component {
 
@@ -28,14 +30,33 @@ class MainScrenn extends Component {
       }
     ]
   };
-  
+
+  componentWillMount() {
+    // this.props.getInfo()
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Text> App Iniciado</Text>
+        <Text>{this.props.info}</Text>
       </View>
     );
   }
 }
 
-export default MainScrenn;
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    info: state.main.info
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getInfo: () => dispatch(getInfo())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScrenn);
