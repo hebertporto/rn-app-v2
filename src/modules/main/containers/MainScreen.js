@@ -12,13 +12,6 @@ import { connect } from 'react-redux';
 
 class MainScrenn extends Component {
 
-  static navigatorStyle = {
-    navBarTextColor: '#FFFFFF',
-    navBarComponentAlignment: 'center',
-    navBarBackgroundColor: '#4C79E8',
-    topBarBorderWidth: 5.5,
-  };
-
   static navigatorButtons = {
     rightButtons: [
       {
