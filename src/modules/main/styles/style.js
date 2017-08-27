@@ -12,22 +12,23 @@ const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 
 export const sliderWidth = viewportWidth;
-export const itemWidth = viewportWidth;
+export const itemWidth = viewportWidth - 80;
 
 const entryBorderRadius = 8;
 
 export const colors = {
     black: '#1a1917',
     gray: '#888888',
-    background1: '#B721FF',
+    background1: '#E4F2EE',
     background2: '#21D4FD',
-    white: 'white'
+    white: 'white',
+    teste: '#F4CBA2'
 };
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white
+    backgroundColor: colors.background1
   },
   gradient: {
     ...StyleSheet.absoluteFillObject
@@ -63,7 +64,7 @@ export default StyleSheet.create({
     backgroundColor: 'yellow'
   },
   slider: {
-    marginTop: 25
+    marginTop: 10
   },
   sliderContentContainer: {
   },
@@ -75,7 +76,7 @@ export default StyleSheet.create({
     height: 8,
     borderRadius: 4,
     marginHorizontal: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.92)'
+    backgroundColor: '#6C7371'
   },
   image: {
     ...StyleSheet.absoluteFillObject,
