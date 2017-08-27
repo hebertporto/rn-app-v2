@@ -62,6 +62,9 @@ export default StyleSheet.create({
     width: itemWidth,
     backgroundColor: 'yellow'
   },
+  slider: {
+    marginTop: 25
+  },
   sliderContentContainer: {
   },
   paginationContainer: {

@@ -10,12 +10,13 @@ import {
   Image
 } from 'react-native';
 
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { Button, Card } from 'nachos-ui'
 
 import { getInfo } from '../actions/index';
 
 import { connect } from 'react-redux';
+import SlideEntry from './../components/SlideEntry'
 
 import styles, { colors } from './../styles/style';
 
@@ -85,20 +86,30 @@ class MainScrenn extends Component {
   _renderItemList({item}) {
     return (
       <Card
-          footerContent={item.text}
-          image={item.image}
-          style={{
-            margin: 8,
-            elevation: 2,
-            shadowColor: '#0000001E',
-            shadowOpacity: 0.26,
-            shadowOffset: { height: 1, width: 0 },
-            shadowRadius: 1,
-            }}
-        />
+        footerContent={item.text}
+        image={item.image}
+        style={{
+          margin: 8,
+          elevation: 2,
+          shadowColor: '#0000001E',
+          shadowOpacity: 0.26,
+          shadowOffset: { height: 1, width: 0 },
+          shadowRadius: 1,
+          }}
+      />
     )
   }
 
+  _renderItemWithParallax ({item, index}, parallaxProps) {
+    return (
+      <SliderEntry
+        data={item}
+        even={(index + 1) % 2 === 0}
+        parallax={true}
+        parallaxProps={parallaxProps}
+      />
+    );
+  }
 
   render() {
     const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
@@ -109,11 +120,27 @@ class MainScrenn extends Component {
       <View style={styles.container}>
         <View style={{ flex: 0.3}}>
           <Carousel
-            ref={(c) => { this._carousel = c; }}
-            data={this.state.entries}
-            renderItem={this._renderItem}
+            data={ENTRIES1}
+            renderItem={this._renderItemWithParallax}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
+            hasParallaxImages={true}
+            firstItem={1}
+            inactiveSlideScale={0.94}
+            inactiveSlideOpacity={0.6}
+            enableMomentum={false}
+            containerCustomStyle={styles.slider}
+            contentContainerCustomStyle={styles.sliderContentContainer}
+            scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
+            onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
+          />
+          <Pagination
+            dotsLength={ENTRIES1.length}
+            activeDotIndex={slider1ActiveSlide}
+            containerStyle={styles.paginationContainer}
+            dotStyle={styles.paginationDot}
+            inactiveDotOpacity={0.4}
+            inactiveDotScale={0.6}
           />
         </View>
         <View style={{ flex: 0.7}}>
