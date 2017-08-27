@@ -8,6 +8,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativenavigation.NavigationApplication;
 
 import java.util.Arrays;
@@ -24,7 +25,8 @@ public class MainApplication extends NavigationApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+          new LinearGradientPackage()
       );
     }
   };
@@ -37,7 +39,8 @@ public class MainApplication extends NavigationApplication {
 
   protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+          new LinearGradientPackage()
       );
   }
 
@@ -45,7 +48,7 @@ public class MainApplication extends NavigationApplication {
   public List<ReactPackage> createAdditionalReactPackages() {
       return getPackages();
   }
-  
+
   @Override
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
