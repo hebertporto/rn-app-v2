@@ -6,7 +6,8 @@ import {
   View,
   FlatList,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
@@ -41,14 +42,19 @@ class MainScrenn extends Component {
             illustration: 'http://i.imgur.com/UYiroysl.jpg'
         },
         {
-            title: 'Earlier this morning, NYC',
+            title: 'Beautiful and dramatic Antelope Canyon',
             subtitle: 'Lorem ipsum dolor sit amet',
             illustration: 'http://i.imgur.com/UPrs1EWl.jpg'
         },
         {
-            title: 'White Pocket Sunset',
+            title: 'Beautiful and dramatic Antelope Canyon',
             subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
             illustration: 'http://i.imgur.com/MABUbpDl.jpg'
+      },
+      {
+        title: 'Beautiful and dramatic Antelope Canyon',
+        subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
+        illustration: 'http://i.imgur.com/MABUbpDl.jpg'
       }],
       data: [
         { id: 1, text: 'The avocado is a tree that is native to Mexico', image:'https://upx.cz/BsN' },
@@ -66,7 +72,10 @@ class MainScrenn extends Component {
   _renderItem ({item, index}) {
     return (
         <View style={styles.slide}>
-            <Text style={styles.title}>{ item.title }</Text>
+          <Image
+            style={styles.imageContainer}
+            source={{ uri: item.illustration }}
+          />
         </View>
     );
   }
@@ -94,11 +103,11 @@ class MainScrenn extends Component {
   render() {
     const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
     const sliderWidth = viewportWidth;
-    const itemWidth = viewportHeight;
+    const itemWidth = viewportWidth;
 
     return (
       <View style={styles.container}>
-        <View style={{ flex: 0.4}}>
+        <View style={{ flex: 0.3}}>
           <Carousel
             ref={(c) => { this._carousel = c; }}
             data={this.state.entries}
@@ -107,7 +116,7 @@ class MainScrenn extends Component {
             itemWidth={itemWidth}
           />
         </View>
-        <View style={{ flex: 0.6}}>
+        <View style={{ flex: 0.7}}>
           <FlatList
             data={this.state.data}
             extraData={this.state}

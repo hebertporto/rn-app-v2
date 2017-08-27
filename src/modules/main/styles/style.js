@@ -12,7 +12,7 @@ const slideWidth = wp(75);
 const itemHorizontalMargin = wp(2);
 
 export const sliderWidth = viewportWidth;
-export const itemWidth = slideWidth + itemHorizontalMargin * 2;
+export const itemWidth = viewportWidth;
 
 const entryBorderRadius = 8;
 
@@ -58,6 +58,8 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   slide: {
+    flexDirection: 'column',
+    width: itemWidth,
     backgroundColor: 'yellow'
   },
   sliderContentContainer: {
@@ -78,5 +80,14 @@ export default StyleSheet.create({
     borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
     borderTopLeftRadius: entryBorderRadius,
     borderTopRightRadius: entryBorderRadius
+  },
+  imageContainer: {
+    flex: 1,
+    width: 100,
+    height: 100,
+    ...StyleSheet.absoluteFillObject,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
