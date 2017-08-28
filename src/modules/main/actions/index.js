@@ -14,3 +14,15 @@ export function getInfo() {
     dispatch(action);
   };
 }
+
+export function fetchNovels() {
+  return (dispatch) => {
+
+    const action = {
+      type: NOVEL_GET_INFO,
+      payload: 'Action BABY !'
+    };
+
+    dispatch(action);
+  };
+}
