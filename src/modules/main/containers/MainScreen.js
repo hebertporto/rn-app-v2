@@ -1,60 +1,49 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 import {
-  StyleSheet,
-  Text,
   View,
-  FlatList,
-  ScrollView,
-  Dimensions,
-  Image,
   Platform
-} from 'react-native';
+} from 'react-native'
 
-import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { Button, Card } from 'nachos-ui'
-
-import { getInfo } from '../actions/index';
-
-import { connect } from 'react-redux';
-
+import Carousel, { Pagination } from 'react-native-snap-carousel'
+import { getInfo } from '../actions/index'
+import { connect } from 'react-redux'
 import SliderEntry from './../components/SlideEntry'
 import ListNovels from './../components/ListNovels'
 
-import styles, { colors, sliderWidth, itemWidth } from './../styles/style';
+import styles, { sliderWidth, itemWidth } from './../styles/style'
 
 class MainScrenn extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       entries: [
         {
-            title: 'Beautiful and dramatic Antelope Canyon',
-            subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-            illustration: 'http://lorempixel.com/600/400/'
+          title: 'Beautiful and dramatic Antelope Canyon',
+          subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+          illustration: 'http://lorempixel.com/600/400/'
         },
         {
-            title: 'Beautiful and dramatic Antelope Canyon',
-            subtitle: 'Lorem ipsum t',
-            illustration: 'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg'
+          title: 'Beautiful and dramatic Antelope Canyon',
+          subtitle: 'Lorem ipsum t',
+          illustration: 'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg'
         },
         {
-            title: 'Beautiful and dramatic Antelope Canyon',
-            subtitle: 'Lorem ipsum dolo ',
-            illustration: 'http://i.imgur.com/MABUbpDl.jpg'
-      }],
+          title: 'Beautiful and dramatic Antelope Canyon',
+          subtitle: 'Lorem ipsum dolo ',
+          illustration: 'http://i.imgur.com/MABUbpDl.jpg'
+        }],
       data: [
-        { id: 1, text: 'The avocado is a tree that is native to Mexico', image:'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg' },
-        { id: 2, text: 'The avocado is a tree that is native to Mexico', image:'https://upx.cz/BsN' },
-        { id: 3, text: 'The avocado is a tree that is native to Mexico', image:'https://upx.cz/BsN' },
-        { id: 4, text: 'The avocado is a tree that is native to Mexico', image:'https://upx.cz/BsN' },
+        {id: 1, text: 'The avocado is a tree that is native to Mexico', image: 'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg'},
+        {id: 2, text: 'The avocado is a tree that is native to Mexico', image: 'https://upx.cz/BsN'},
+        {id: 3, text: 'The avocado is a tree that is native to Mexico', image: 'https://upx.cz/BsN'},
+        {id: 4, text: 'The avocado is a tree that is native to Mexico', image: 'https://upx.cz/BsN'}
       ],
       slider1ActiveSlide: 1
     }
   }
 
-  componentWillMount() {
+  componentWillMount () {
     // this.props.getInfo()
   }
 
@@ -63,23 +52,23 @@ class MainScrenn extends Component {
       <SliderEntry
         data={item}
         even={(index + 1) % 2 === 0}
-        parallax={true}
+        parallax
         parallaxProps={parallaxProps}
       />
-    );
+    )
   }
 
-  render() {
-    const { data } = this.state;
+  render () {
+    const { data } = this.state
     return (
       <View style={styles.container}>
-        <View style={{ flex: 0.4}}>
+        <View style={{ flex: 0.4 }}>
           <Carousel
             data={this.state.entries}
             renderItem={this._renderItemWithParallax}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
-            hasParallaxImages={true}
+            hasParallaxImages
             firstItem={1}
             inactiveSlideScale={0.94}
             inactiveSlideOpacity={0.6}
@@ -87,7 +76,7 @@ class MainScrenn extends Component {
             containerCustomStyle={styles.slider}
             contentContainerCustomStyle={styles.sliderContentContainer}
             scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
-            onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
+            onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
           />
           <Pagination
             dotsLength={this.state.entries.length}
@@ -102,22 +91,20 @@ class MainScrenn extends Component {
           <ListNovels data={data} />
         </View>
       </View>
-    );
+    )
   }
 }
-
-
 
 const mapStateToProps = (state, ownProps) => {
   return {
     info: state.main.info
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getInfo: () => dispatch(getInfo())
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainScrenn);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScrenn)
