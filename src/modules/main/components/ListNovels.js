@@ -16,8 +16,6 @@ const newCardTheme = {
   CARD_FOOTER_HEIGHT: 60
 }
 
-themeManager.setSource('Card', () => (newCardTheme))
-
 export default class ListNovels extends Component {
   constructor (props) {
     super(props)
@@ -68,6 +66,7 @@ export default class ListNovels extends Component {
     return (
       <TouchableOpacity onPress={changeScreen}>
         <Card
+          theme={newCardTheme}
           image={item.image}
           bodyContent={text}
           footerContent={footer}

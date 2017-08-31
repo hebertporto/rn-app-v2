@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+
 import {
   FlatList,
-  StyleSheet,
   Text,
   View,
   TouchableOpacity
 } from 'react-native'
+
 import { Card, themeManager } from 'nachos-ui'
+
+import styles from './../styles/listChapter.style'
 
 const cardTheme = themeManager.getStyle('Card')
 
@@ -37,10 +40,18 @@ export default class ListNovels extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderItemList () {
+    const { clickScreen } = this.props
     return (
-      <View>
-        <Text> Capitulo 1</Text>
-      </View>
+      <TouchableOpacity onPress={clickScreen}>
+        <View style={styles.listItem}>
+          <View style={styles.imageContainer}>
+            <Text> 1 </Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text>Capítulo Capítulo Capítulo Capítulo Capítulo Capítulo Capítulo</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
     )
   }
 
@@ -79,17 +90,7 @@ export default class ListNovels extends Component {
           image={novel.image}
           bodyContent={text}
           footerContent={footer}
-          imageStyle={{
-            height: 110,
-            ...StyleSheet.absoluteFillObject
-          }}
           style={{
-            margin: 8,
-            elevation: 2,
-            shadowColor: 'black',
-            shadowOpacity: 0.26,
-            shadowOffset: { height: 1, width: 0 },
-            shadowRadius: 1,
             backgroundColor: 'white'
           }}
         />

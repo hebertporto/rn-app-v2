@@ -16,7 +16,11 @@ class NovelScreen extends Component {
         {id: 1, number: 1, title: 'Primeiro'},
         {id: 2, number: 2, title: 'Segundo'},
         {id: 3, number: 3, title: 'Terceiro'},
-        {id: 4, number: 4, title: 'Quarto'}
+        {id: 6, number: 4, title: 'Quarto'},
+        {id: 7, number: 4, title: 'Quarto'},
+        {id: 8, number: 4, title: 'Quarto'},
+        {id: 9, number: 4, title: 'Quarto'},
+        {id: 10, number: 4, title: 'Quarto'}
       ],
       novel: {
         title: 'Titulo',
@@ -24,12 +28,21 @@ class NovelScreen extends Component {
         description: 'Bla Bla Bla Bla Bla'
       }
     }
+    this.goToChapterScreen = this.goToChapterScreen.bind(this)
   }
+
+  goToChapterScreen (chapter) {
+    this.props.navigator.push({
+      screen: 'chapter',
+      title: 'Chapter Screen'
+    })
+  }
+
   render () {
     const { data, novel } = this.state
     return (
       <View>
-        <ListChapters data={data} novel={novel} />
+        <ListChapters data={data} novel={novel} clickScreen={this.goToChapterScreen} />
       </View>
     )
   }

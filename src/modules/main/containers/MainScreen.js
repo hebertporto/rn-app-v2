@@ -41,10 +41,10 @@ class MainScrenn extends Component {
       ],
       slider1ActiveSlide: 1
     }
-    this.goToScreen = this.goToScreen.bind(this)
+    this.goToNovelScreen = this.goToNovelScreen.bind(this)
   }
 
-  goToScreen (screen) {
+  goToNovelScreen (screen) {
     this.props.navigator.push({
       screen: 'novel',
       title: 'Novel Screen'
@@ -97,7 +97,7 @@ class MainScrenn extends Component {
           />
         </View>
         <View style={{ flex: 0.6 }}>
-          <ListNovels data={data} changeScreen={this.goToScreen} />
+          <ListNovels data={data} changeScreen={this.goToNovelScreen} />
         </View>
       </View>
     )
