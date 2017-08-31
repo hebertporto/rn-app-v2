@@ -39,6 +39,7 @@
 						"__DEV__"
 				],
 				"ignore": [
+          "./jsconfig.json"
 				],
 				"parser": "babel-eslint",
 				"plugins": [

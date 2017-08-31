@@ -2,11 +2,11 @@ import { Navigation } from 'react-native-navigation'
 import { Provider } from 'react-redux'
 import { registerScreens } from './screens'
 
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore'
 
-const store = configureStore();
+const store = configureStore()
 
-registerScreens(store, Provider);
+registerScreens(store, Provider)
 
 const initialScreen = {
   screen: {
@@ -15,11 +15,11 @@ const initialScreen = {
     navigatorStyle: {
       navBarTextColor: '#FFFFFF',
       navBarBackgroundColor: '#2196F3',
-      navBarTitleTextCentered: true,
+      navBarTitleTextCentered: true
     }
   }
 }
 
 export function startApp () {
-  Navigation.startSingleScreenApp(initialScreen);
+  Navigation.startSingleScreenApp(initialScreen)
 }

@@ -41,6 +41,14 @@ class MainScrenn extends Component {
       ],
       slider1ActiveSlide: 1
     }
+    this.goToScreen = this.goToScreen.bind(this)
+  }
+
+  goToScreen (screen) {
+    this.props.navigator.push({
+      screen: 'novel',
+      title: 'Novel Screen'
+    })
   }
 
   componentWillMount () {
@@ -54,6 +62,7 @@ class MainScrenn extends Component {
         even={(index + 1) % 2 === 0}
         parallax
         parallaxProps={parallaxProps}
+        changeScreen={this.goToScreen}
       />
     )
   }
@@ -88,7 +97,7 @@ class MainScrenn extends Component {
           />
         </View>
         <View style={{ flex: 0.6 }}>
-          <ListNovels data={data} />
+          <ListNovels data={data} changeScreen={this.goToScreen} />
         </View>
       </View>
     )

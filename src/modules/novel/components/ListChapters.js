@@ -12,7 +12,6 @@ const cardTheme = themeManager.getStyle('Card')
 
 const newCardTheme = {
   ...cardTheme,
-  CARD_MIN_HEIGHT: 172,
   CARD_FOOTER_HEIGHT: 60
 }
 
@@ -25,6 +24,7 @@ export default class ListNovels extends Component {
       data: []
     }
     this._renderItemList = this._renderItemList.bind(this)
+    this._renderHeader = this._renderHeader.bind(this)
   }
 
   componentWillMount () {
@@ -36,9 +36,17 @@ export default class ListNovels extends Component {
 
   _keyExtractor = (item, index) => item.id;
 
-  _renderItemList ({item}) {
-    const text = (<Text style={{ color: 'white', bottom: 0 }}>{item.text}</Text>)
-    const { changeScreen } = this.props
+  _renderItemList () {
+    return (
+      <View>
+        <Text> Capitulo 1</Text>
+      </View>
+    )
+  }
+
+  _renderHeader () {
+    const { novel } = this.props
+    const text = (<Text style={{ color: 'white', bottom: 0 }}>{novel.title}</Text>)
 
     const footer = (
       <View style={{
@@ -66,9 +74,9 @@ export default class ListNovels extends Component {
     )
 
     return (
-      <TouchableOpacity onPress={changeScreen}>
+      <View style={{ flex: 1 }}>
         <Card
-          image={item.image}
+          image={novel.image}
           bodyContent={text}
           footerContent={footer}
           imageStyle={{
@@ -85,7 +93,7 @@ export default class ListNovels extends Component {
             backgroundColor: 'white'
           }}
         />
-      </TouchableOpacity>
+      </View>
     )
   }
 
@@ -96,6 +104,7 @@ export default class ListNovels extends Component {
         extraData={this.state}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItemList}
+        ListHeaderComponent={this._renderHeader}
       />
     )
   }
