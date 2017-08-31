@@ -1,37 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { Text, View } from 'react-native';
+import { Text, View } from 'react-native'
 
-import { getInfo } from '../actions/index';
+import { getInfo } from '../actions/index'
 
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 class NovelScrenn extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
     }
   }
-  render() {
+  render () {
     return (
-      <View style={styles.container}>
+      <View>
         <Text> Novel Screen </Text>
       </View>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     info: state.main.info
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getInfo: () => dispatch(getInfo())
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NovelScrenn);
+export default connect(mapStateToProps, mapDispatchToProps)(NovelScrenn)
