@@ -11,12 +11,7 @@ registerScreens(store, Provider)
 const initialScreen = {
   screen: {
     screen: 'main',
-    title: 'Super Novel Reader',
-    navigatorStyle: {
-      navBarTextColor: '#FFFFFF',
-      navBarBackgroundColor: '#2196F3',
-      navBarTitleTextCentered: true
-    }
+    title: 'Super Novel Reader'
   }
 }
 

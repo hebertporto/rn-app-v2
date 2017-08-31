@@ -6,9 +6,13 @@ import { getInfo } from '../actions/index'
 
 import { connect } from 'react-redux'
 
+import navigatorStyle from './../../theme/navigationBarStyle'
+
 import ListChapters from './../components/ListChapters'
 
 class NovelScreen extends Component {
+  static navigatorStyle = navigatorStyle
+
   constructor (props) {
     super(props)
     this.state = {

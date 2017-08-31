@@ -11,9 +11,12 @@ import { connect } from 'react-redux'
 import SliderEntry from './../components/SlideEntry'
 import ListNovels from './../components/ListNovels'
 
+import navigatorStyle from './../../theme/navigationBarStyle'
 import styles, { sliderWidth, itemWidth } from './../styles/style'
 
 class MainScrenn extends Component {
+  static navigatorStyle = navigatorStyle
+
   constructor (props) {
     super(props)
     this.state = {
