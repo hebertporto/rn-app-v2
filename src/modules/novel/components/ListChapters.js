@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 
 import { Card, themeManager } from 'nachos-ui'
+import LinearGradient from 'react-native-linear-gradient'
 
 import styles from './../styles/listChapter.style'
 
@@ -47,7 +48,7 @@ export default class ListNovels extends Component {
           <View style={styles.imageContainer}>
             <Text> 1 </Text>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={styles.chapterTitle}>
             <Text>Capítulo Capítulo Capítulo Capítulo Capítulo Capítulo Capítulo</Text>
           </View>
         </View>
@@ -57,35 +58,27 @@ export default class ListNovels extends Component {
 
   _renderHeader () {
     const { novel } = this.props
-    const text = (<Text style={{ color: 'white', bottom: 0 }}>{novel.title}</Text>)
-
+    const text = (
+      <View style={styles.titleContainer}>
+        <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']} style={styles.gradientContainer} />
+        <Text style={styles.title} numberOfLines={1}>{novel.title}</Text>
+      </View>
+    )
     const footer = (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        marginTop: 10
-      }}>
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'flex-start'
-        }}>
+      <View style={styles.footerContainer}>
+        <View style={styles.footerElementWrapper}>
           <Text> % </Text>
-          <Text numberOfLines={1} style={{flexDirection: 'row', paddingBottom: 5, lineHeight: 20}}> Paçoca Fubá </Text>
+          <Text numberOfLines={1} style={styles.footerText}> Paçoca Fubá </Text>
         </View>
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'flex-start'
-        }}>
+        <View style={styles.footerElementWrapper}>
           <Text> % </Text>
-          <Text numberOfLines={1} style={{flexDirection: 'row', paddingBottom: 5, lineHeight: 20}}> Jose Barros </Text>
+          <Text numberOfLines={1} style={styles.footerText}> Jose Barros </Text>
         </View>
       </View>
     )
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.headerWrapper}>
         <Card
           image={novel.image}
           bodyContent={text}
