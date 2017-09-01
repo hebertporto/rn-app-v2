@@ -10,7 +10,7 @@ registerScreens(store, Provider)
 
 const initialScreen = {
   screen: {
-    screen: 'chapter',
+    screen: 'main',
     title: 'Super Novel Reader'
   }
 }
