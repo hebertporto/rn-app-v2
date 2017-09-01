@@ -27,7 +27,7 @@ class NovelScreen extends Component {
         {id: 10, number: 4, title: 'Quarto'}
       ],
       novel: {
-        title: 'Titulo',
+        title: 'Tales of Demons and Gods',
         image: 'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg',
         description: 'Bla Bla Bla Bla Bla'
       }

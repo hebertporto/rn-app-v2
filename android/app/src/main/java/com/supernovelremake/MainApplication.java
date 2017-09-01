@@ -10,6 +10,7 @@ import com.facebook.soloader.SoLoader;
 
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativenavigation.NavigationApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,8 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new LinearGradientPackage()
+          new LinearGradientPackage(),
+          new VectorIconsPackage()
       );
     }
   };
@@ -40,7 +42,8 @@ public class MainApplication extends NavigationApplication {
   protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new LinearGradientPackage()
+          new LinearGradientPackage(),
+          new VectorIconsPackage()
       );
   }
 

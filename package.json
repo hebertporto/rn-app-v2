@@ -14,6 +14,7 @@
 				"react-native-linear-gradient": "^2.3.0",
 				"react-native-navigation": "^1.1.205",
 				"react-native-snap-carousel": "^3.1.0",
+				"react-native-vector-icons": "^4.3.0",
 				"react-redux": "^5.0.6",
 				"redux": "^3.7.2",
 				"redux-immutable-state-invariant": "^2.0.0",
@@ -39,10 +40,9 @@
 						"__DEV__"
 				],
 				"ignore": [
-          "./jsconfig.json"
+						"./jsconfig.json"
 				],
 				"parser": "babel-eslint",
-				"plugins": [
-				]
+				"plugins": []
 		}
 }

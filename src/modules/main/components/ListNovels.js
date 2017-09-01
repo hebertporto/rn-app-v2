@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import { Card } from 'nachos-ui'
 
@@ -42,13 +43,13 @@ export default class ListNovels extends Component {
     const footer = (
       <View style={styles.footerContainer}>
         <View style={styles.footerElementWrapper}>
-          <Text> % </Text>
+          <Text> <Icon name='copyright' size={18} color='#717171' /> </Text>
           <Text numberOfLines={1} style={styles.footerText}>
             Paçoca Fubá
           </Text>
         </View>
         <View style={styles.footerElementWrapper}>
-          <Text> % </Text>
+          <Text> <Icon name='translate' size={18} color='#717171' /> </Text>
           <Text numberOfLines={1} style={styles.footerText}>
             Jose Barros
           </Text>

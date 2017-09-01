@@ -1,6 +1,22 @@
 import { StyleSheet } from 'react-native'
+import { themeManager } from 'nachos-ui'
+
+const buttonTheme = themeManager.getStyle('Button')
+const cardTheme = themeManager.getStyle('Card')
 
 const hm = 8
+
+export const themeCustomBotton = {
+  ...buttonTheme,
+  BUTTON_ROUNDED_RADIUS: 10,
+  BUTTON_ROUNDED_HEIGHT: 20,
+  BUTTON_FONT_COLOR: 'rgba(179, 177, 177, 0.8)'
+}
+
+export const newCardTheme = {
+  ...cardTheme,
+  CARD_FOOTER_HEIGHT: 60
+}
 
 export default StyleSheet.create({
   listItem: {
@@ -8,7 +24,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: hm * 2,
     borderBottomWidth: 1,
-    borderBottomColor: 'grey',
+    borderBottomColor: 'rgba(179, 177, 177, 0.6)',
     backgroundColor: 'white',
     flex: 1
   },
@@ -47,7 +63,7 @@ export default StyleSheet.create({
   titleContainer: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'flex-start'
+    alignItems: 'center'
   },
   title: {
     color: 'white',
@@ -71,9 +87,28 @@ export default StyleSheet.create({
     lineHeight: 20
   },
   headerWrapper: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomColor: 'rgba(179, 177, 177, 0.6)',
+    borderBottomWidth: 1
   },
   chapterTitle: {
     flex: 1
+  },
+  textStyleDescription: {
+    paddingTop: 15,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  textContainerDescription: {
+    flex: 1
+  },
+  buttonWrapper: {
+    width: 130,
+    flex: 1,
+    marginBottom: 10
   }
 })
