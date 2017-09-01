@@ -6,15 +6,11 @@ import {
   View,
   TouchableOpacity
 } from 'react-native'
-import { Card, themeManager } from 'nachos-ui'
+import LinearGradient from 'react-native-linear-gradient'
 
-const cardTheme = themeManager.getStyle('Card')
+import { Card } from 'nachos-ui'
 
-const newCardTheme = {
-  ...cardTheme,
-  CARD_MIN_HEIGHT: 172,
-  CARD_FOOTER_HEIGHT: 60
-}
+import styles, { customCardTheme } from './../styles/ListNovels.style'
 
 export default class ListNovels extends Component {
   constructor (props) {
@@ -35,30 +31,27 @@ export default class ListNovels extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderItemList ({item}) {
-    const text = (<Text style={{ color: 'white', bottom: 0 }}>{item.text}</Text>)
+    const text = (
+      <View style={styles.titleContainer}>
+        <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']} style={styles.gradientContainer} />
+        <Text style={styles.title} numberOfLines={1}>{item.text}</Text>
+      </View>
+    )
     const { changeScreen } = this.props
 
     const footer = (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        marginTop: 10
-      }}>
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'flex-start'
-        }}>
+      <View style={styles.footerContainer}>
+        <View style={styles.footerElementWrapper}>
           <Text> % </Text>
-          <Text numberOfLines={1} style={{flexDirection: 'row', paddingBottom: 5, lineHeight: 20}}> Paçoca Fubá </Text>
+          <Text numberOfLines={1} style={styles.footerText}>
+            Paçoca Fubá
+          </Text>
         </View>
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'flex-start'
-        }}>
+        <View style={styles.footerElementWrapper}>
           <Text> % </Text>
-          <Text numberOfLines={1} style={{flexDirection: 'row', paddingBottom: 5, lineHeight: 20}}> Jose Barros </Text>
+          <Text numberOfLines={1} style={styles.footerText}>
+            Jose Barros
+          </Text>
         </View>
       </View>
     )
@@ -66,7 +59,7 @@ export default class ListNovels extends Component {
     return (
       <TouchableOpacity onPress={changeScreen}>
         <Card
-          theme={newCardTheme}
+          theme={customCardTheme}
           image={item.image}
           bodyContent={text}
           footerContent={footer}
