@@ -29,13 +29,13 @@ export default class SliderEntry extends Component {
   }
 
   render () {
-    const { even, changeScreen } = this.props
+    const { even } = this.props
 
     return (
       <TouchableOpacity
         activeOpacity={1}
         style={styles.slideInnerContainer}
-        onPress={changeScreen}
+        onPress={() => { alert(`You've clicked '${even}'`) }}
         >
         <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
           { this.image }

@@ -1,28 +1,24 @@
 import {
   NOVEL_FETCH_ALL,
   NOVEL_GET_INFO
-} from './types';
+} from './types'
 
-export function getInfo() {
+export function getInfo () {
   return (dispatch) => {
-
     const action = {
       type: NOVEL_GET_INFO,
       payload: 'Action BABY !'
-    };
-
-    dispatch(action);
-  };
+    }
+    dispatch(action)
+  }
 }
 
-export function fetchNovels() {
+export const fetchNovels = () => {
   return (dispatch) => {
-
-    const action = {
-      type: NOVEL_GET_INFO,
-      payload: 'Action BABY !'
-    };
-
-    dispatch(action);
-  };
+    fetch('https://stark-beach-53351.herokuapp.com/api/novels')
+      .then(response => response.json())
+      .then((responseJson) => {
+        dispatch({ type: NOVEL_FETCH_ALL, payload: responseJson.data })
+       })
+  }
 }

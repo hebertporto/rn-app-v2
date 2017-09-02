@@ -29,13 +29,13 @@ export default class ListNovels extends Component {
     })
   }
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item._id;
 
   _renderItemList ({item}) {
     const text = (
       <View style={styles.titleContainer}>
         <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']} style={styles.gradientContainer} />
-        <Text style={styles.title} numberOfLines={1}>{item.text}</Text>
+        <Text style={styles.title} numberOfLines={1}>{item.name}</Text>
       </View>
     )
     const { changeScreen } = this.props
@@ -45,13 +45,13 @@ export default class ListNovels extends Component {
         <View style={styles.footerElementWrapper}>
           <Text> <Icon name='copyright' size={18} color='#717171' /> </Text>
           <Text numberOfLines={1} style={styles.footerText}>
-            Paçoca Fubá
+            {item.author}
           </Text>
         </View>
         <View style={styles.footerElementWrapper}>
           <Text> <Icon name='translate' size={18} color='#717171' /> </Text>
           <Text numberOfLines={1} style={styles.footerText}>
-            Jose Barros
+            {item.translation_team}
           </Text>
         </View>
       </View>
@@ -61,7 +61,7 @@ export default class ListNovels extends Component {
       <TouchableOpacity onPress={changeScreen}>
         <Card
           theme={customCardTheme}
-          image={item.image}
+          image={item.cover_url}
           bodyContent={text}
           footerContent={footer}
           imageStyle={{
@@ -83,8 +83,10 @@ export default class ListNovels extends Component {
   }
 
   render () {
+    const { header } = this.props
     return (
       <FlatList
+        ListHeaderComponent={header}
         data={this.state.data}
         extraData={this.state}
         keyExtractor={this._keyExtractor}
