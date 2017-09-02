@@ -14,7 +14,7 @@ import ListNovels from './../components/ListNovels'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles, { sliderWidth, itemWidth } from './../styles/style'
 
-
+import SplashScreen from 'react-native-splash-screen'
 
 class MainScrenn extends Component {
   static navigatorStyle = navigatorStyle
@@ -231,6 +231,7 @@ class MainScrenn extends Component {
   componentDidMount () {
     const { fetchNovels } = this.props
     fetchNovels()
+    SplashScreen.hide()
   }
 
   _renderItemWithParallax ({item, index}, parallaxProps) {
