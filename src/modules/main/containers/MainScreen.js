@@ -16,7 +16,7 @@ import SliderEntry from './../components/SlideEntry'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Card } from 'nachos-ui'
-
+import If from './../../shared/If'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles, { sliderWidth, itemWidth } from './../styles/style'
 
@@ -52,7 +52,8 @@ class MainScrenn extends Component {
         'translation_team': 'Saikai Scan',
         'name': 'A Will Eternal',
         'cover_url': 'http://res.cloudinary.com/dwvrdf3zg/image/upload/v1491962791/v48diswa9d80orugtx3s.jpg'
-    }],
+      }],
+      loading: true,
       slider1ActiveSlide: 1
     }
     this.goToNovelScreen = this.goToNovelScreen.bind(this)
@@ -75,7 +76,10 @@ class MainScrenn extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState({ data: nextProps.novels })
+    this.setState({
+      data: nextProps.novels,
+      loading: false
+    })
   }
 
   _renderItemWithParallax ({item, index}, parallaxProps) {
@@ -173,7 +177,7 @@ class MainScrenn extends Component {
   }
 
   render () {
-    const { data } = this.state
+    const { data, loading } = this.state
     const header = (
       <View style={styles.container}>
         <View style={{ flex: 0.4 }}>
@@ -186,7 +190,7 @@ class MainScrenn extends Component {
             firstItem={1}
             inactiveSlideScale={0.94}
             inactiveSlideOpacity={0.6}
-            enableMomentum={false}
+            enableMomentum
             containerCustomStyle={styles.slider}
             contentContainerCustomStyle={styles.sliderContentContainer}
             scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
@@ -205,13 +209,19 @@ class MainScrenn extends Component {
     )
     return (
       <View style={{ flex: 1 }}>
-        <FlatList
-          ListHeaderComponent={header}
-          data={data}
-          extraData={this.state}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItemList}
-        />
+        <If test={loading}>
+          <Text>loading</Text>
+        </If>
+        <If test={!loading}>
+          <FlatList
+            ListHeaderComponent={header}
+            data={data}
+            extraData={this.state}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItemList}
+          />
+        </If>
+
       </View>
     )
   }

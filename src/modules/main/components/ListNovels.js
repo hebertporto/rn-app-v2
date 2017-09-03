@@ -8,7 +8,6 @@ import {
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
 import { Card } from 'nachos-ui'
 
 import styles, { customCardTheme } from './../styles/ListNovels.style'
