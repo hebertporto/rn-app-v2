@@ -9,7 +9,7 @@ const hm = 8
 export const themeCustomBotton = {
   ...buttonTheme,
   BUTTON_ROUNDED_RADIUS: 10,
-  BUTTON_ROUNDED_HEIGHT: 20,
+  BUTTON_ROUNDED_HEIGHT: 45,
   BUTTON_FONT_COLOR: 'rgba(179, 177, 177, 0.8)'
 }
 

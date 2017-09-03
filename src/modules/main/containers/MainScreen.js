@@ -15,8 +15,9 @@ import { connect } from 'react-redux'
 import SliderEntry from './../components/SlideEntry'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Card } from 'nachos-ui'
+import { Card, Spinner } from 'nachos-ui'
 import If from './../../shared/If'
+import LoadingSpinner from './../../shared/LoadingSpinner'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles, { sliderWidth, itemWidth } from './../styles/style'
 
@@ -191,7 +192,9 @@ class MainScrenn extends Component {
     return (
       <View style={{ flex: 1 }}>
         <If test={loading}>
-          <Text>loading</Text>
+          <View style={styles.spinnerView}>
+            <LoadingSpinner color='blue' />
+          </View>
         </If>
         <If test={!loading}>
           <FlatList

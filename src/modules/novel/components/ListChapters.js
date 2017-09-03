@@ -61,16 +61,16 @@ export default class ListNovels extends Component {
 
   _keyExtractor = (item, index) => item.id;
 
-  _renderItemList () {
+  _renderItemList (item) {
     const { clickScreen } = this.props
     return (
       <TouchableOpacity onPress={clickScreen}>
         <View style={styles.listItem}>
           <View style={styles.imageContainer}>
-            <Text> 123 </Text>
+            <Text> {item.number} </Text>
           </View>
           <View style={styles.chapterTitle}>
-            <Text>Capítulo Capítulo Capítulo Capítulo </Text>
+            <Text>{item.title} </Text>
           </View>
         </View>
       </TouchableOpacity>

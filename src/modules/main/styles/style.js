@@ -94,5 +94,10 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  spinnerView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

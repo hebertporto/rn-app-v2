@@ -3,7 +3,11 @@ export function fetchAllNovels (state, action) {
 }
 
 export function fetchOneNovel (state, action) {
-  return { ...state, novel: action.payload }
+  return { ...state, chapters: action.payload }
+}
+
+export function fetchChapter (state, action) {
+  return { ...state, chapter: action.payload }
 }
 
 export function fetchInfo (state, action) {
