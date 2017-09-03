@@ -34,6 +34,20 @@ class NovelScreen extends Component {
     }
     this.goToChapterScreen = this.goToChapterScreen.bind(this)
   }
+  componentWillMount () {
+    const { author, cover_url, name, description, translation_team, _id } = this.props
+    this.setState({
+      novel: {
+        author,
+        description,
+        name,
+        _id,
+        cover_url,
+        translation_team
+      }
+    })
+    console.log('props', this.props)
+  }
 
   goToChapterScreen (chapter) {
     this.props.navigator.push({

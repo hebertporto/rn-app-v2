@@ -13,11 +13,11 @@ export default class SliderEntry extends Component {
   };
 
   get image () {
-    const { data: { illustration }, parallax, parallaxProps, even } = this.props
+    const { data: { cover_url }, parallax, parallaxProps, even } = this.props
 
     return (
       <ParallaxImage
-        source={{ uri: illustration }}
+        source={{ uri: cover_url }}
         containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
         style={[styles.image, { position: 'relative' }]}
         parallaxFactor={0.35}
@@ -29,13 +29,13 @@ export default class SliderEntry extends Component {
   }
 
   render () {
-    const { even } = this.props
+    const { even, data, clickScreen } = this.props
 
     return (
       <TouchableOpacity
         activeOpacity={1}
         style={styles.slideInnerContainer}
-        onPress={() => { alert(`You've clicked '${even}'`) }}
+        onPress={() => clickScreen(data)}
         >
         <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
           { this.image }

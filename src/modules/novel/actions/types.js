@@ -1,0 +1,1 @@
+export const NOVEL_FETCH_ONEL = 'NOVEL_FETCH_ONE'

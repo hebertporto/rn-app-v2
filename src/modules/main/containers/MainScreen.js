@@ -30,29 +30,8 @@ class MainScrenn extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      entries: [
-        {
-          title: 'Beautiful and dramatic Antelope Canyon',
-          subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-          illustration: 'http://lorempixel.com/600/400/'
-        },
-        {
-          title: 'Beautiful and dramatic Antelope Canyon',
-          subtitle: 'Lorem ipsum t',
-          illustration: 'https://res.cloudinary.com/dwvrdf3zg/image/upload/v1490558181/snzbs0u5eq73osxdxfat.jpg'
-        },
-        {
-          title: 'Beautiful and dramatic Antelope Canyon',
-          subtitle: 'Lorem ipsum dolo ',
-          illustration: 'http://i.imgur.com/MABUbpDl.jpg'
-        }],
-      data: [{
-        '_id': '58ed8ba7865f5600045be54d',
-        'author': 'Ergen',
-        'translation_team': 'Saikai Scan',
-        'name': 'A Will Eternal',
-        'cover_url': 'http://res.cloudinary.com/dwvrdf3zg/image/upload/v1491962791/v48diswa9d80orugtx3s.jpg'
-      }],
+      entries: [],
+      data: [],
       loading: true,
       slider1ActiveSlide: 1
     }
@@ -60,13 +39,6 @@ class MainScrenn extends Component {
     this._renderItemWithParallax = this._renderItemWithParallax.bind(this)
     this._renderHeader = this._renderHeader.bind(this)
     this._renderItemList = this._renderItemList.bind(this)
-  }
-
-  goToNovelScreen (screen) {
-    this.props.navigator.push({
-      screen: 'novel',
-      title: 'Novel Screen'
-    })
   }
 
   componentDidMount () {
@@ -78,7 +50,16 @@ class MainScrenn extends Component {
   componentWillReceiveProps (nextProps) {
     this.setState({
       data: nextProps.novels,
-      loading: false
+      loading: false,
+      entries: nextProps.novels.slice(3, 6)
+    })
+  }
+
+  goToNovelScreen (novel) {
+    this.props.navigator.push({
+      screen: 'novel',
+      title: novel.name,
+      passProps: novel
     })
   }
 
@@ -89,6 +70,7 @@ class MainScrenn extends Component {
         even={(index + 1) % 2 === 0}
         parallax
         parallaxProps={parallaxProps}
+        clickScreen={(novel) => this.goToNovelScreen(novel)}
       />
     )
   }
@@ -132,7 +114,6 @@ class MainScrenn extends Component {
         <Text style={stylesFlat.title} numberOfLines={1}>{item.name}</Text>
       </View>
     )
-    const { changeScreen } = this.props
 
     const footer = (
       <View style={stylesFlat.footerContainer}>
@@ -152,7 +133,7 @@ class MainScrenn extends Component {
     )
 
     return (
-      <TouchableOpacity onPress={changeScreen}>
+      <TouchableOpacity onPress={() => this.goToNovelScreen(item)}>
         <Card
           theme={customCardTheme}
           image={item.cover_url}
@@ -221,7 +202,6 @@ class MainScrenn extends Component {
             renderItem={this._renderItemList}
           />
         </If>
-
       </View>
     )
   }

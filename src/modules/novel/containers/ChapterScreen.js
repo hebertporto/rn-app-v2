@@ -33,13 +33,13 @@ class ChapterScreen extends Component {
           <View style={styles.viewStyle}>
             <View style={styles.viewContainerText}>
               <Text style={styles.iconStyle}>
-                <Icon name='translate' size={18} color='#717171' />
+                <Icon name='closed-caption' size={18} color='#717171' />
               </Text>
               <Text numberOfLines={1} style={styles.textStyleHeader}> Paçoca </Text>
             </View>
             <View style={styles.viewContainerText}>
               <Text style={styles.iconStyle}>
-                <Icon name='translate' size={18} color='#717171' />
+                <Icon name='spellcheck' size={18} color='#717171' />
               </Text>
               <Text numberOfLines={1} style={styles.textStyleHeader}> João </Text>
             </View>
