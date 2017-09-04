@@ -9,7 +9,7 @@ const hm = 8
 export const themeCustomBotton = {
   ...buttonTheme,
   BUTTON_ROUNDED_RADIUS: 10,
-  BUTTON_ROUNDED_HEIGHT: 45,
+  BUTTON_ROUNDED_HEIGHT: 60,
   BUTTON_FONT_COLOR: 'rgba(179, 177, 177, 0.8)'
 }
 
@@ -109,6 +109,6 @@ export default StyleSheet.create({
   buttonWrapper: {
     width: 130,
     flex: 1,
-    marginBottom: 10
+    marginBottom: 5
   }
 })

@@ -158,7 +158,7 @@ class NovelScreen extends Component {
             iconName='md-eye'
             iconColor='rgba(179, 177, 177, 0.8)'
             iconPosition='left'
-            iconSize={16}
+            iconSize={28}
             theme={themeCustomBotton}
             onPress={this._toogleText}
           >

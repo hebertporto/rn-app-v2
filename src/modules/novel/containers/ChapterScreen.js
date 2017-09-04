@@ -7,7 +7,8 @@ import { fetchChapterById } from '../../main/actions/index'
 import { connect } from 'react-redux'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles from './../styles/chapterScreen.style'
-
+import If from './../../shared/If'
+import LoadingSpinner from './../../shared/LoadingSpinner'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 class ChapterScreen extends Component {
@@ -21,7 +22,8 @@ class ChapterScreen extends Component {
       number: '',
       title: '',
       revisors: '',
-      translators: ''
+      translators: '',
+      loading: true
     }
   }
 
@@ -39,13 +41,14 @@ class ChapterScreen extends Component {
       title,
       revisors,
       translators,
-      _id
+      _id,
+      loading: false
     })
   }
 
   render () {
     const novelName = this.props.novelName
-    const { title, content, number, revisors, translators } = this.state
+    const { title, content, number, revisors, translators, loading } = this.state
 
     return (
       <View style={{ flex: 1 }}>
@@ -55,27 +58,32 @@ class ChapterScreen extends Component {
             <Text style={styles.subTitleStyle}>{`${number} - ${title}`}</Text>
           </View>
           <View style={styles.divider} />
-          <View style={styles.viewStyle}>
-            <View style={styles.viewContainerText}>
-              <Text style={styles.iconStyle}>
-                <Icon name='closed-caption' size={18} color='#717171' />
-              </Text>
-              <Text numberOfLines={1} style={styles.textStyleHeader}> {translators} </Text>
+          <If test={loading}>
+            <LoadingSpinner color='blue' />
+          </If>
+          <If test={!loading}>
+            <View style={styles.viewStyle}>
+              <View style={styles.viewContainerText}>
+                <Text style={styles.iconStyle}>
+                  <Icon name='closed-caption' size={18} color='#717171' />
+                </Text>
+                <Text numberOfLines={1} style={styles.textStyleHeader}> {translators} </Text>
+              </View>
+              <View style={styles.viewContainerText}>
+                <Text style={styles.iconStyle}>
+                  <Icon name='spellcheck' size={18} color='#717171' />
+                </Text>
+                <Text numberOfLines={1} style={styles.textStyleHeader}> {revisors} </Text>
+              </View>
             </View>
-            <View style={styles.viewContainerText}>
-              <Text style={styles.iconStyle}>
-                <Icon name='spellcheck' size={18} color='#717171' />
+            <View style={styles.divider} />
+            <View>
+              <Text style={styles.textStyle}>
+                {content}
               </Text>
-              <Text numberOfLines={1} style={styles.textStyleHeader}> {revisors} </Text>
+              <View style={{ height: 70 }} />
             </View>
-          </View>
-          <View style={styles.divider} />
-          <View>
-            <Text style={styles.textStyle}>
-              {content}
-            </Text>
-            <View style={{ height: 70 }} />
-          </View>
+          </If>
         </ScrollView>
       </View>
     )

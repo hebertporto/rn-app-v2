@@ -190,7 +190,7 @@ class MainScrenn extends Component {
       </View>
     )
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <If test={loading}>
           <View style={styles.spinnerView}>
             <LoadingSpinner color='blue' />
