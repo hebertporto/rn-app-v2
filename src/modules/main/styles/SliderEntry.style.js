@@ -29,17 +29,22 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     borderTopLeftRadius: entryBorderRadius,
-    borderTopRightRadius: entryBorderRadius
+    borderTopRightRadius: entryBorderRadius,
+    ...StyleSheet.absoluteFillObject
   },
   imageContainerEven: {
-    backgroundColor: colors.black
+    backgroundColor: colors.black,
+    ...StyleSheet.absoluteFillObject
   },
   image: {
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
     borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
     borderTopLeftRadius: entryBorderRadius,
-    borderTopRightRadius: entryBorderRadius
+    borderTopRightRadius: entryBorderRadius,
+    position: 'relative',
+    width: null,
+    height: null
   },
   // image's border radius is buggy on ios; let's hack it!
   radiusMask: {
@@ -66,8 +71,8 @@ export default StyleSheet.create({
     backgroundColor: colors.black
   },
   title: {
-    color: colors.black,
-    fontSize: 13,
+    color: 'white',
+    fontSize: 18,
     fontWeight: 'bold',
     letterSpacing: 0.5
   },
@@ -82,5 +87,20 @@ export default StyleSheet.create({
   },
   subtitleEven: {
     color: 'rgba(255, 255, 255, 0.7)'
+  },
+  parallaxContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  gradientContainer: {
+    height: 35,
+    opacity: 0.6,
+    alignSelf: 'stretch',
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0
   }
 })

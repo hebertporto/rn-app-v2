@@ -15,7 +15,8 @@ import { connect } from 'react-redux'
 import SliderEntry from './../components/SlideEntry'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Card, Spinner } from 'nachos-ui'
+import { Card } from 'nachos-ui'
+import _ from 'lodash'
 import If from './../../shared/If'
 import LoadingSpinner from './../../shared/LoadingSpinner'
 import navigatorStyle from './../../theme/navigationBarStyle'
@@ -38,7 +39,6 @@ class MainScrenn extends Component {
     }
     this.goToNovelScreen = this.goToNovelScreen.bind(this)
     this._renderItemWithParallax = this._renderItemWithParallax.bind(this)
-    this._renderHeader = this._renderHeader.bind(this)
     this._renderItemList = this._renderItemList.bind(this)
   }
 
@@ -52,7 +52,7 @@ class MainScrenn extends Component {
     this.setState({
       data: nextProps.novels,
       loading: false,
-      entries: nextProps.novels.slice(3, 6)
+      entries: _.shuffle(nextProps.novels).slice(0, 3)
     })
   }
 
@@ -73,36 +73,6 @@ class MainScrenn extends Component {
         parallaxProps={parallaxProps}
         clickScreen={(novel) => this.goToNovelScreen(novel)}
       />
-    )
-  }
-
-  _renderHeader (){
-    return (
-      <View style={styles.container}>
-        <Carousel
-          data={this.state.entries}
-          renderItem={this._renderItemWithParallax}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          hasParallaxImages
-          firstItem={1}
-          inactiveSlideScale={0.94}
-          inactiveSlideOpacity={0.6}
-          enableMomentum={false}
-          containerCustomStyle={styles.slider}
-          contentContainerCustomStyle={styles.sliderContentContainer}
-          scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
-          onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
-        />
-        <Pagination
-          dotsLength={this.state.entries.length}
-          activeDotIndex={this.state.slider1ActiveSlide}
-          containerStyle={styles.paginationContainer}
-          dotStyle={styles.paginationDot}
-          inactiveDotOpacity={0.4}
-          inactiveDotScale={0.6}
-        />
-      </View>
     )
   }
 
@@ -177,14 +147,6 @@ class MainScrenn extends Component {
             contentContainerCustomStyle={styles.sliderContentContainer}
             scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
             onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
-          />
-          <Pagination
-            dotsLength={this.state.entries.length}
-            activeDotIndex={this.state.slider1ActiveSlide}
-            containerStyle={styles.paginationContainer}
-            dotStyle={styles.paginationDot}
-            inactiveDotOpacity={0.4}
-            inactiveDotScale={0.6}
           />
         </View>
       </View>

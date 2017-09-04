@@ -65,7 +65,8 @@ export default StyleSheet.create({
     backgroundColor: 'yellow'
   },
   slider: {
-    marginTop: 10
+    marginTop: 20,
+    marginBottom: 10
   },
   sliderContentContainer: {
   },

@@ -8,6 +8,7 @@
 		},
 		"dependencies": {
 				"fetch": "^1.1.0",
+				"lodash": "^4.17.4",
 				"nachos-ui": "^0.1.2",
 				"prop-types": "^15.5.10",
 				"react": "16.0.0-alpha.12",

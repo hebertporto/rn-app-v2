@@ -62,6 +62,7 @@ class ChapterScreen extends Component {
             <LoadingSpinner color='blue' />
           </If>
           <If test={!loading}>
+            <View>
             <View style={styles.viewStyle}>
               <View style={styles.viewContainerText}>
                 <Text style={styles.iconStyle}>
@@ -82,6 +83,7 @@ class ChapterScreen extends Component {
                 {content}
               </Text>
               <View style={{ height: 70 }} />
+            </View>
             </View>
           </If>
         </ScrollView>
