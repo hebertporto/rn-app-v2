@@ -12,6 +12,7 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import com.sbugert.rnadmob.RNAdMobPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +31,8 @@ public class MainApplication extends NavigationApplication {
           new MainReactPackage(),
           new LinearGradientPackage(),
           new VectorIconsPackage(),
-          new SplashScreenReactPackage()
+          new SplashScreenReactPackage(),
+          new RNAdMobPackage()
       );
     }
   };
@@ -46,7 +48,8 @@ public class MainApplication extends NavigationApplication {
           new MainReactPackage(),
           new LinearGradientPackage(),
           new VectorIconsPackage(),
-          new SplashScreenReactPackage()
+          new SplashScreenReactPackage(),
+          new RNAdMobPackage()
       );
   }
 
