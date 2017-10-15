@@ -1,4 +1,4 @@
-package com.supernovelremake;
+package com.superleitorapp;
 
 import android.app.Application;
 

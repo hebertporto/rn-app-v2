@@ -1,4 +1,4 @@
-package com.supernovelremake;
+package com.superleitorapp;
 
 import android.os.Bundle;
 import com.reactnativenavigation.controllers.SplashActivity;
@@ -12,6 +12,6 @@ public class MainActivity extends SplashActivity {
     }
 
     protected String getMainComponentName() {
-        return "supernovelremake";
+        return "superleitorapp";
     }
 }

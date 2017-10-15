@@ -138,15 +138,10 @@ class MainScrenn extends Component {
             renderItem={this._renderItemWithParallax}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
-            hasParallaxImages
             firstItem={1}
-            inactiveSlideScale={0.94}
-            inactiveSlideOpacity={0.6}
-            enableMomentum
             containerCustomStyle={styles.slider}
             contentContainerCustomStyle={styles.sliderContentContainer}
             scrollEndDragDebounceValue={Platform.OS === 'ios' ? 0 : 100}
-            onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
           />
         </View>
       </View>
@@ -160,7 +155,6 @@ class MainScrenn extends Component {
         </If>
         <If test={!loading}>
           <FlatList
-            ListHeaderComponent={header}
             data={data}
             extraData={this.state}
             keyExtractor={this._keyExtractor}
