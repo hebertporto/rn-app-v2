@@ -75,12 +75,14 @@ export default StyleSheet.create({
   footerContainer: {
     flex: 1,
     flexDirection: 'column',
-    marginTop: 10
+    marginTop: 5,
+    paddingBottom: 5
   },
   footerElementWrapper: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginTop: 2
   },
   footerText: {
     paddingBottom: 5,

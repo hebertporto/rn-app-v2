@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import Carousel, { Pagination } from 'react-native-snap-carousel'
+import Carousel from 'react-native-snap-carousel'
 import { getInfo, fetchNovels } from '../actions/index'
 import { connect } from 'react-redux'
 import SliderEntry from './../components/SlideEntry'
@@ -38,7 +38,7 @@ class MainScrenn extends Component {
       slider1ActiveSlide: 1
     }
     this.goToNovelScreen = this.goToNovelScreen.bind(this)
-    this._renderItemWithParallax = this._renderItemWithParallax.bind(this)
+    this._renderSlide = this._renderSlide.bind(this)
     this._renderItemList = this._renderItemList.bind(this)
   }
 
@@ -51,8 +51,21 @@ class MainScrenn extends Component {
   componentWillReceiveProps (nextProps) {
     this.setState({
       data: nextProps.novels,
-      loading: false,
-      entries: _.shuffle(nextProps.novels).slice(0, 3)
+      loading: false
+    })
+    if (nextProps.novels) {
+      this.getFeaturedSlides(nextProps.novels)
+    }
+  }
+
+  getFeaturedSlides = (novels) => {
+    const featured = ['599c57d81d932f0004aa726e', '599c5ca11d932f0004aa726f', '58d81ce68f3f0e0004f4d29f']
+    const entries = novels.filter(novel => featured.includes(novel._id))
+    const aux = entries[1]
+    entries[1] = entries[2]
+    entries[2] = aux
+    this.setState({
+      entries
     })
   }
 
@@ -64,7 +77,7 @@ class MainScrenn extends Component {
     })
   }
 
-  _renderItemWithParallax ({item, index}, parallaxProps) {
+  _renderSlide ({item, index}, parallaxProps) {
     return (
       <SliderEntry
         data={item}
@@ -129,13 +142,13 @@ class MainScrenn extends Component {
   }
 
   render () {
-    const { data, loading } = this.state
+    const { data, loading, entries } = this.state
     const header = (
       <View style={styles.container}>
         <View style={{ flex: 0.4 }}>
           <Carousel
-            data={this.state.entries}
-            renderItem={this._renderItemWithParallax}
+            data={entries}
+            renderItem={this._renderSlide}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
             firstItem={1}
@@ -159,6 +172,7 @@ class MainScrenn extends Component {
             extraData={this.state}
             keyExtractor={this._keyExtractor}
             renderItem={this._renderItemList}
+            ListHeaderComponent={header}
           />
         </If>
       </View>

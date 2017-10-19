@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, TouchableOpacity } from 'react-native'
-import { ParallaxImage } from 'react-native-snap-carousel'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import styles from './../styles/SliderEntry.style'
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -14,24 +13,15 @@ export default class SliderEntry extends Component {
   };
 
   get image () {
-    const { data: { cover_url, name }, parallax, parallaxProps, even } = this.props
+    const { data: { cover_url, name } } = this.props
 
     return (
-      <View style={styles.parallaxContainer}>
-        <ParallaxImage
-          source={{ uri: cover_url }}
-          containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
-          style={styles.image}
-          parallaxFactor={0.1}
-          showSpinner
-          spinnerColor={even ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.25)'}
-          {...parallaxProps}
-        />
+      <Image style={styles.parallaxContainer} source={{ uri: cover_url }}>
         <LinearGradient colors={['rgba(0,0,0,0.5)', 'rgba(0,0,0,0)']} style={styles.gradientContainer} />
         <Text style={styles.title}>
           {name}
         </Text>
-      </View>
+      </Image>
     )
   }
 
