@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles from './../styles/chapterScreen.style'
 import If from './../../shared/If'
+import { sendAnalyticsData } from './../../../config/analytics'
+
 import LoadingSpinner from './../../shared/LoadingSpinner'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -44,6 +46,7 @@ class ChapterScreen extends Component {
       _id,
       loading: false
     })
+    sendAnalyticsData(`${this.props.novelName} - ${number}`)
   }
 
   render () {

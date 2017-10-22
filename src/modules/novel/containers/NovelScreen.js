@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 import navigatorStyle from './../../theme/navigationBarStyle'
 import _ from 'lodash'
+import { sendAnalyticsData } from './../../../config/analytics'
 
 import { Card, Button } from 'nachos-ui'
 import LinearGradient from 'react-native-linear-gradient'
@@ -55,6 +56,7 @@ class NovelScreen extends Component {
     const { fetchNovelById } = this.props
     const { _id } = this.props
     fetchNovelById(_id)
+    sendAnalyticsData(this.state.novel.name)
     this._renderDescription()
   }
 
