@@ -16,7 +16,7 @@ import SliderEntry from './../components/SlideEntry'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Card } from 'nachos-ui'
-import _ from 'lodash'
+import Analytics from 'analytics-react-native'
 import If from './../../shared/If'
 import LoadingSpinner from './../../shared/LoadingSpinner'
 import navigatorStyle from './../../theme/navigationBarStyle'
@@ -25,6 +25,7 @@ import styles, { sliderWidth, itemWidth } from './../styles/style'
 import stylesFlat, { customCardTheme } from './../styles/ListNovels.style'
 
 // import SplashScreen from 'react-native-splash-screen'
+const analytics = new Analytics('6dHHr85qeEpIrikZCDP8gnNjue4bCsZE')
 
 class MainScrenn extends Component {
   static navigatorStyle = navigatorStyle
@@ -45,6 +46,10 @@ class MainScrenn extends Component {
   componentDidMount () {
     const { fetchNovels } = this.props
     fetchNovels()
+    analytics.track({
+      userId: 'Hebert',
+      event: 'Hit Main Screen'
+    })
     // SplashScreen.hide()
   }
 
