@@ -66,27 +66,27 @@ class ChapterScreen extends Component {
           </If>
           <If test={!loading}>
             <View>
-            <View style={styles.viewStyle}>
-              <View style={styles.viewContainerText}>
-                <Text style={styles.iconStyle}>
-                  <Icon name='closed-caption' size={18} color='#717171' />
-                </Text>
-                <Text numberOfLines={1} style={styles.textStyleHeader}> {translators} </Text>
+              <View style={styles.viewStyle}>
+                <View style={styles.viewContainerText}>
+                  <Text style={styles.iconStyle}>
+                    <Icon name='closed-caption' size={18} color='#717171' />
+                  </Text>
+                  <Text numberOfLines={1} style={styles.textStyleHeader}> {translators} </Text>
+                </View>
+                <View style={styles.viewContainerText}>
+                  <Text style={styles.iconStyle}>
+                    <Icon name='spellcheck' size={18} color='#717171' />
+                  </Text>
+                  <Text numberOfLines={1} style={styles.textStyleHeader}> {revisors} </Text>
+                </View>
               </View>
-              <View style={styles.viewContainerText}>
-                <Text style={styles.iconStyle}>
-                  <Icon name='spellcheck' size={18} color='#717171' />
+              <View style={styles.divider} />
+              <View>
+                <Text style={styles.textStyle}>
+                  {content}
                 </Text>
-                <Text numberOfLines={1} style={styles.textStyleHeader}> {revisors} </Text>
+                <View style={{ height: 70 }} />
               </View>
-            </View>
-            <View style={styles.divider} />
-            <View>
-              <Text style={styles.textStyle}>
-                {content}
-              </Text>
-              <View style={{ height: 70 }} />
-            </View>
             </View>
           </If>
         </ScrollView>

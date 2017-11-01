@@ -15,9 +15,27 @@ import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import styles, { themeCustomBotton, newCardTheme } from './../styles/listChapter.style'
+// let reorderIcon
 
 class NovelScreen extends Component {
   static navigatorStyle = navigatorStyle
+  // static navigatorButtons = {
+  //   rightButtons: [
+  //     {
+  //       title: '0->9',
+  //       id: 'edit',
+  //       testID: 'e2e_rules',
+  //       showAsAction: 'ifRoom',
+  //       buttonColor: 'white',
+  //       buttonFontSize: 16,
+  //       buttonFontWeight: '600'
+  //     },
+  //     {
+  //       icon: reorderIcon,
+  //       id: 'add'
+  //     }
+  //   ]
+  // }
 
   constructor (props) {
     super(props)
@@ -30,12 +48,12 @@ class NovelScreen extends Component {
       textToogle: 'VER MAIS',
       lastChapter: { number: 0, title: '' }
     }
-
     this.goToChapterScreen = this.goToChapterScreen.bind(this)
     this._renderItemList = this._renderItemList.bind(this)
     this._renderHeader = this._renderHeader.bind(this)
     this._toogleText = this._toogleText.bind(this)
     this._renderDescription = this._renderDescription.bind(this)
+    // this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
   }
 
   componentWillMount () {
@@ -66,6 +84,16 @@ class NovelScreen extends Component {
       lastChapter: nextProps.chapters.length > 0 ? nextProps.chapters[nextProps.chapters.length - 1] : { number: 0, title: '' }
     })
   }
+
+  // onNavigatorEvent = (event) => {
+  //   if (event.type === 'NavBarButtonPress') {
+  //     const { data } = this.state
+  //     const reorder = _.reverse(data)
+  //     this.setState({
+  //       data: reorder
+  //     })
+  //   }
+  // }
 
   loadMoreChapters = () => {
     const { data, fullData } = this.state
@@ -106,7 +134,7 @@ class NovelScreen extends Component {
 
   async _toogleText () {
     await this.setState((prevState) => {
-      return { hideFullDescription: !prevState.hideFullDescription };
+      return { hideFullDescription: !prevState.hideFullDescription }
     })
     this._renderDescription()
   }
