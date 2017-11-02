@@ -4,6 +4,10 @@ import { Text, View, ScrollView } from 'react-native'
 
 import { fetchChapterById } from '../../main/actions/index'
 
+import {
+  AdMobBanner
+} from 'react-native-admob'
+
 import { connect } from 'react-redux'
 import navigatorStyle from './../../theme/navigationBarStyle'
 import styles from './../styles/chapterScreen.style'
@@ -12,6 +16,9 @@ import { sendAnalyticsData } from './../../../config/analytics'
 
 import LoadingSpinner from './../../shared/LoadingSpinner'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+
+const splitByBlankSpace = /\s+/
+const firstWord = 0
 
 class ChapterScreen extends Component {
   static navigatorStyle = navigatorStyle
@@ -35,7 +42,6 @@ class ChapterScreen extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('nextProps', nextProps)
     const { content, number, title, revisors, translators, _id } = nextProps.chapter
     this.setState({
       content,
@@ -47,6 +53,28 @@ class ChapterScreen extends Component {
       loading: false
     })
     sendAnalyticsData(`${this.props.novelName} - ${number}`)
+  }
+  bannerError = (error) => {
+    console.log('ERROR BANNER', error)
+  }
+
+  renderAd = (unitId) => {
+    return (
+      <AdMobBanner
+        bannerSize='smartBannerPortrait'
+        adUnitID={unitId}
+        testDeviceID='EMULATOR'
+        didFailToReceiveAdWithError={this.bannerError}
+      />
+    )
+  }
+
+  splitTextInHalf = (text, firstHalf) => {
+    const words = text.split(splitByBlankSpace)
+    const middleWord = words.length / 2
+    const halfWords = firstHalf ? words.slice(firstWord, middleWord) : words.slice(middleWord)
+
+    return halfWords.join(' ')
   }
 
   render () {
@@ -82,10 +110,15 @@ class ChapterScreen extends Component {
               </View>
               <View style={styles.divider} />
               <View>
+                <View style={{ height: 50 }}>
+                  {this.renderAd('ca-app-pub-8356555649836141/4361271948')}
+                </View>
                 <Text style={styles.textStyle}>
                   {content}
                 </Text>
-                <View style={{ height: 70 }} />
+                <View style={{ height: 50 }}>
+                  {this.renderAd('ca-app-pub-8356555649836141/6095712364')}
+                </View>
               </View>
             </View>
           </If>
