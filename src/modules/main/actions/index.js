@@ -25,7 +25,11 @@ export const fetchNovels = () => {
     fetch(`${BASE_URL}${ALL_NOVELS_ENDPOINT}`)
       .then(response => response.json())
       .then((responseJson) => {
+        console.log('responseJson', responseJson)
         dispatch({ type: NOVEL_FETCH_ALL, payload: responseJson.data })
+      })
+      .catch((err) => {
+        console.log('error', err)
       })
   }
 }
@@ -45,7 +49,7 @@ export const fetchChapterById = (id) => {
     fetch(`${BASE_URL}/chapter/${id}`)
       .then(response => response.json())
       .then((responseJson) => {
-        dispatch({ type: CHAPTER_FECTH, payload: responseJson.data[0]})
+        dispatch({ type: CHAPTER_FECTH, payload: responseJson.data[0] })
       })
        .catch(error => console.log('error chapterFecth', error))
   }
