@@ -14,6 +14,7 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +35,8 @@ public class MainApplication extends NavigationApplication {
           new VectorIconsPackage(),
           new SplashScreenReactPackage(),
           new RNAdMobPackage(),
-          new RNDeviceInfo()
+          new RNDeviceInfo(),
+          new ReactNativeOneSignalPackage()
       );
     }
   };
@@ -52,7 +54,8 @@ public class MainApplication extends NavigationApplication {
           new VectorIconsPackage(),
           new SplashScreenReactPackage(),
           new RNAdMobPackage(),
-          new RNDeviceInfo()
+          new RNDeviceInfo(),
+          new ReactNativeOneSignalPackage()
       );
   }
 
