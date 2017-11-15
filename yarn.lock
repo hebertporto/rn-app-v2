@@ -3966,6 +3966,12 @@ react-native-navigation@^1.1.205:
   dependencies:
     lodash "4.x.x"
 
+react-native-onesignal@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.0.7.tgz#d4fd7cb8297aada7e1a11abef311fb577d3f8428"
+  dependencies:
+    invariant "^2.2.2"
+
 react-native-snap-carousel@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.1.0.tgz#76d25c3bdb1adcf170695a4e35691636d8bdc2d6"
