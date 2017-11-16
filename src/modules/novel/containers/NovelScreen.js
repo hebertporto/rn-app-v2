@@ -19,41 +19,14 @@ import styles, { themeCustomBotton, newCardTheme } from './../styles/listChapter
 
 class NovelScreen extends Component {
   static navigatorStyle = navigatorStyle
-  // static navigatorButtons = {
-  //   rightButtons: [
-  //     {
-  //       title: '0->9',
-  //       id: 'edit',
-  //       testID: 'e2e_rules',
-  //       showAsAction: 'ifRoom',
-  //       buttonColor: 'white',
-  //       buttonFontSize: 16,
-  //       buttonFontWeight: '600'
-  //     },
-  //     {
-  //       icon: reorderIcon,
-  //       id: 'add'
-  //     }
-  //   ]
-  // }
-
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: [],
-      fullData: [],
-      novel: {},
-      hideFullDescription: true,
-      description: '',
-      textToogle: 'VER MAIS',
-      lastChapter: { number: 0, title: '' }
-    }
-    this.goToChapterScreen = this.goToChapterScreen.bind(this)
-    this._renderItemList = this._renderItemList.bind(this)
-    this._renderHeader = this._renderHeader.bind(this)
-    this._toogleText = this._toogleText.bind(this)
-    this._renderDescription = this._renderDescription.bind(this)
-    // this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+  state = {
+    data: [],
+    fullData: [],
+    novel: {},
+    hideFullDescription: true,
+    description: '',
+    textToogle: 'VER MAIS',
+    lastChapter: { number: 0, title: '' }
   }
 
   componentWillMount () {
@@ -85,16 +58,6 @@ class NovelScreen extends Component {
     })
   }
 
-  // onNavigatorEvent = (event) => {
-  //   if (event.type === 'NavBarButtonPress') {
-  //     const { data } = this.state
-  //     const reorder = _.reverse(data)
-  //     this.setState({
-  //       data: reorder
-  //     })
-  //   }
-  // }
-
   loadMoreChapters = () => {
     const { data, fullData } = this.state
     const numberTotal = fullData.length - data.length
@@ -105,7 +68,7 @@ class NovelScreen extends Component {
     })
   }
 
-  goToChapterScreen (chapter) {
+  goToChapterScreen = (chapter) => {
     this.props.navigator.push({
       screen: 'chapter',
       title: `${chapter.number} - ${chapter.title}`,
@@ -132,14 +95,14 @@ class NovelScreen extends Component {
     )
   }
 
-  async _toogleText () {
+  _toogleText = async () => {
     await this.setState((prevState) => {
       return { hideFullDescription: !prevState.hideFullDescription }
     })
     this._renderDescription()
   }
 
-  async _renderDescription () {
+  _renderDescription = async () => {
     const description = this.state.novel.description
 
     if (this.state.hideFullDescription) {
@@ -157,7 +120,7 @@ class NovelScreen extends Component {
 
   _keyExtractor = (item, index) => item._id;
 
-  _renderItemList (data) {
+  _renderItemList = (data) => {
     const { item } = data
     return (
       <TouchableOpacity onPress={() => this.goToChapterScreen(item)}>
@@ -173,7 +136,7 @@ class NovelScreen extends Component {
     )
   }
 
-  _renderHeader () {
+  _renderHeader = () => {
     const { novel, textToogle, description, lastChapter } = this.state
     const textTitle = (
       <View style={styles.titleContainer}>

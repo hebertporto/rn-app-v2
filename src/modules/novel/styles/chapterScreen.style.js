@@ -5,7 +5,7 @@ export default StyleSheet.create({
     padding: 10,
     marginBottom: 50,
     justifyContent: 'center',
-    textAlign: 'center',
+    textAlign: 'justify',
     fontSize: 16,
     lineHeight: 20,
     color: 'black'

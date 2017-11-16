@@ -28,18 +28,11 @@ import stylesFlat, { customCardTheme } from './../styles/ListNovels.style'
 
 class MainScrenn extends Component {
   static navigatorStyle = navigatorStyle
-
-  constructor (props) {
-    super(props)
-    this.state = {
-      entries: [],
-      data: [],
-      loading: true,
-      slider1ActiveSlide: 1
-    }
-    this.goToNovelScreen = this.goToNovelScreen.bind(this)
-    this._renderSlide = this._renderSlide.bind(this)
-    this._renderItemList = this._renderItemList.bind(this)
+  state = {
+    entries: [],
+    data: [],
+    loading: true,
+    slider1ActiveSlide: 1
   }
 
   componentWillMount () {
@@ -85,7 +78,7 @@ class MainScrenn extends Component {
   }
 
   onRegistered (notifData) {
-    console.log("Device had been registered for push notifications!", notifData)
+    console.log('Device had been registered for push notifications!', notifData)
   }
 
   onIds (device) {
@@ -103,7 +96,7 @@ class MainScrenn extends Component {
     })
   }
 
-  goToNovelScreen (novel) {
+  goToNovelScreen = (novel) => {
     this.props.navigator.push({
       screen: 'novel',
       title: novel.name,
@@ -111,7 +104,7 @@ class MainScrenn extends Component {
     })
   }
 
-  _renderSlide ({item, index}, parallaxProps) {
+  _renderSlide = ({item, index}, parallaxProps) => {
     return (
       <SliderEntry
         data={item}
@@ -125,7 +118,7 @@ class MainScrenn extends Component {
 
   _keyExtractor = (item, index) => item._id;
 
-  _renderItemList ({item}) {
+  _renderItemList = ({item}) => {
     const text = (
       <View style={stylesFlat.titleContainer}>
         <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']} style={stylesFlat.gradientContainer} />
