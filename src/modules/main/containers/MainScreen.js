@@ -98,7 +98,7 @@ class MainScrenn extends Component {
 
   goToNovelScreen = (novel) => {
     this.props.navigator.push({
-      screen: 'novel',
+      screen: 'video',
       title: novel.name,
       passProps: novel
     })
